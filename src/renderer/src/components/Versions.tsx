@@ -1,16 +1,16 @@
-import { useState } from 'react'
+import { FC, useRef } from 'react';
 
-function Versions(): JSX.Element {
-  const [versions] = useState(window.electron.process.versions)
+const Versions: FC = () => {
+    const { current: versions } = useRef(window.electron.process.versions);
 
-  return (
-    <ul className="versions">
-      <li className="electron-version">Electron v{versions.electron}</li>
-      <li className="chrome-version">Chromium v{versions.chrome}</li>
-      <li className="node-version">Node v{versions.node}</li>
-      <li className="v8-version">V8 v{versions.v8}</li>
-    </ul>
-  )
-}
+    return (
+        <ul className="text-blue-500">
+            <li>Electron v{versions.electron}</li>
+            <li>Chromium v{versions.chrome}</li>
+            <li>Node v{versions.node}</li>
+            <li>V8 v{versions.v8}</li>
+        </ul>
+    );
+};
 
-export default Versions
+export default Versions;
